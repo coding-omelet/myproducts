@@ -38,7 +38,7 @@
 
         // レコード数が1なら、メールアドレスを変数に格納
         } else {
-            $mail_array = $stmt->fecth();
+            $mail_array = $stmt->fetch();
             $mail = $mail_array[mail];
         }
     }
