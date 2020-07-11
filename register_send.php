@@ -1,4 +1,4 @@
-<!-- 本登録が済んでいないかチェック -->
+<!-- メール送信完了ページ -->
 
 <?php
     $errors = array();
@@ -43,7 +43,7 @@
             if ($row_count == 0) break;
         }
         // クリック用アドレス
-        $url = 'https://tb-220042.tech-base.net/hoge.php'.'?urltoken='.$urltoken;
+        $url = 'https://tb-220042.tech-base.net/register_page_2.php'.'?urltoken='.$urltoken;
 
 
         // 既に同じメールアドレスで本登録されていないか？
@@ -71,7 +71,7 @@
                 // 仮登録テーブルの内容を更新
                 $sql = 'UPDATE pre_member SET urltoken=:urltoken,date=now(),flag=0 WHERE mail=:mail';
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':urltoken', $urlroken, PDO::PARAM_STR);
+                $stmt->bindParam(':urltoken', $urltoken, PDO::PARAM_STR);
                 $stmt->bindParam(':mail', $mail_address, PDO::PARAM_STR);
                 $stmt->execute();
     
