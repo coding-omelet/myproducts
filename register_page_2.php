@@ -1,5 +1,6 @@
-<!-- メンバーテーブルの構成を変更する（ユーザー名） -->
 <?php
+    session_start();
+    header("Content-type: text/html; charset=utf-8");
     $errors = array();
 
     // メールから遷移していない場合
@@ -40,6 +41,7 @@
         } else {
             $mail_array = $stmt->fetch();
             $mail = $mail_array['mail'];
+            $_SESSION['mail'] = $mail;
         }
     }
 ?>
@@ -61,15 +63,16 @@
             ?>
         <!-- エラーがない場合 -->
         <?php else: ?>
-            以下の事項を記入してください。
+            以下の項目を記入してください。
             <form action="register_check.php" method="post">
+                <input type="hidden" name="urltoken" value=<?=$urltoken?>>
                 <table>
                     <tr>
-                        <td>ユーザー名（表示名）：<td>
+                        <td>ユーザー名（表示名）：</td>
                         <td><input type="text" name="name"></td>
                     </tr>
                     <tr>
-                        <td>パスワード（半角英数字）：<td>
+                        <td>パスワード（半角英数字）：</td>
                         <td><input type="password" name="password"></td>
                     </tr>
                     <tr>
