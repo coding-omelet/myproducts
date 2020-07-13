@@ -66,7 +66,7 @@
         <!-- エラーがない場合 -->
         <?php else: ?>
             以下の項目を確認し、問題が無ければ登録ボタンをクリックしてください。<br>
-            <form action="register_check.php" method="post">
+            <form action="register_complete.php" method="post">
                 <input type="hidden" name="urltoken" value=<?=$_POST['urltoken']?>>
                 <table>
                     <tr>
@@ -81,7 +81,7 @@
                         <td><?=$password_hide?></td>
                     </tr>
                     <tr>
-                        <td><input type="button" valur="戻る" onClick="history.back()"></td>
+                        <td><input type="button" value="戻る" onClick="history.back()"></td>
                         <td><input type="submit" value="登録"></td>
                     </tr>
                 </table>
