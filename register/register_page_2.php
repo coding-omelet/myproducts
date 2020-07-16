@@ -14,7 +14,7 @@
         $urltoken = $_GET["urltoken"];
 
         // データベースに接続
-        require_once 'db.php';
+        require_once '/db.php';
 
         // urltokenに一致し、未登録かつ仮登録から24時間以内のレコードを取り出す
         // 同一アドレスからは複数の登録はないとする

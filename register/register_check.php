@@ -71,7 +71,7 @@
                 <table>
                     <tr>
                         <td>メールアドレス：</td>
-                        <td><?=$_SESSION['mail']?></p>
+                        <td><?=$_SESSION['mail']?></td>
                     <tr>
                         <td>ユーザー名（表示名）：</td>
                         <td><?=$name?></td>

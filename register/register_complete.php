@@ -13,7 +13,7 @@
     // 確認ページから遷移していれば
     } else {
         // データベースに接続
-        require_once 'db.php';
+        require_once '/db.php';
 
         // データを変数に入れる
         $urltoken = $_POST['urltoken'];
@@ -84,7 +84,7 @@
         <!-- エラーがない場合 -->
         <?php else: ?>
             ユーザー登録が完了しました。<br>
-            <a href="login">ログイン</a>
+            <a href="../login/login_form.php">ログイン</a>
 
         <?php endif; ?>
     </body>

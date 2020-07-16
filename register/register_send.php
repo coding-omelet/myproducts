@@ -26,7 +26,7 @@
     // 正しい形式のメールアドレスが入力されていれば
     if (count($errors) == 0) {
         // データベースに接続
-        require_once 'db.php';
+        require_once '/db.php';
 
         // 他と被らないようにトークンを生成
         while (TRUE) {
@@ -43,7 +43,7 @@
             if ($row_count == 0) break;
         }
         // クリック用アドレス
-        $url = 'https://tb-220042.tech-base.net/register_page_2.php'.'?urltoken='.$urltoken;
+        $url = 'https://tb-220042.tech-base.net'.__DIR__.'/register_page_2.php'.'?urltoken='.$urltoken;
 
 
         // 既に同じメールアドレスで本登録されていないか？
@@ -86,7 +86,7 @@
             }
 
             // メール送信
-            require 'phpmailer/send_register_mail.php';
+            require '/phpmailer/send_register_mail.php';
         }
 
     }
