@@ -26,7 +26,7 @@
     // 正しい形式のメールアドレスが入力されていれば
     if (count($errors) == 0) {
         // データベースに接続
-        require_once '/db.php';
+        require_once '/public_html/db.php';
 
         // 他と被らないようにトークンを生成
         while (TRUE) {
@@ -48,7 +48,7 @@
 
         // 既に同じメールアドレスで本登録されていないか？
 
-        $sql = 'SELECT flag FROM member WHERE mail=:mail AND flag=1';
+        $sql = 'SELECT flag FROM member WHERE mail=:mail';
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':mail', $mail_address, PDO::PARAM_STR);
         $stmt->execute();
@@ -86,7 +86,7 @@
             }
 
             // メール送信
-            require '/phpmailer/send_register_mail.php';
+            require '/public_html/phpmailer/send_register_mail.php';
         }
 
     }

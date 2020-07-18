@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>パスワード：</td>
-                    <td><input type="text" name="password" maxlength="30"></td>
+                    <td><input type="password" name="password" maxlength="30"></td>
                 </tr>
                 <tr>
                     <td><input type="button" value="戻る" onClick="history.back()"></td>

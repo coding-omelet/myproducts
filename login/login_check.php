@@ -30,7 +30,7 @@
     $errors = array();
 
     // データベースに接続
-    require_once '/db.php';
+    require_once '/public_html/db.php';
 
 	//POSTされたデータを各変数に入れる
 	$mail_address = isset($_POST['mail_address']) ? $_POST['mail_address'] : NULL;
@@ -50,7 +50,7 @@
 	//パスワード入力判定
 	if ($password == '') {
 		$errors['password_empty'] = "パスワードが入力されていません。";
-    } elseif (!preg_match('/^[0-9a-zA-Z]{5,30}$/', $_POST["password"])) {
+    } elseif (!preg_match('/^[0-9a-zA-Z]{1,30}$/', $_POST["password"])) {
 		$errors['password_length'] = "パスワードは半角英数字30文字以下で入力して下さい。";
     } else {
 		$password_hide = str_repeat('*', strlen($password));
@@ -79,13 +79,14 @@
                     session_regenerate_id(true);
                     
                     $_SESSION['mail_address'] = $mail_address;
-                    header("Location: top_page.php");
+                    $_SESSION['name'] = $row['name'];
+                    header("Location: /top_page.php");
                     exit;
                 } else {
-                    $errors['password'] = "アカウントまたはパスワードが一致しません。";
+                    $errors['password'] = "メールアドレスまたはパスワードが一致しません。";
                 }
             } else {
-                $errors['mail'] = "アカウントまたはパスワードが一致しません。";
+                $errors['mail'] = "メールアドレスまたはパスワードが一致しません。";
             }
                         
         } catch (PDOException $e) {
