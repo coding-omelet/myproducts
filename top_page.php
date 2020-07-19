@@ -26,5 +26,12 @@
             <a href="login/login_form.php">ログイン<br></a>
         
         <?php endif; ?>
+
+        <!-- 投稿フォームへのリンク -->
+        <hr>
+            <a href="post/post_form.php">投稿する<br></a>
+
+        <!-- タイムラインを表示 -->
+
     </body>
 </html>

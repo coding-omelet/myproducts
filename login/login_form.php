@@ -9,6 +9,12 @@
     // CJ
     header('X_FRAME_OPTIONS: SAMEORIGIN');
 
+    // ログイン済みならトップページに飛ばす
+    if (isset($_SESSION['name'])) {
+        header("Location: /top_page.php");
+        exit;
+    }
+
 ?>
 
 <!DOCTYPE html>

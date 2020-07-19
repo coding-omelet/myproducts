@@ -13,5 +13,7 @@
             メールアドレス：<input type="text" name="mail_address"><br>
             <input type="submit" name="submit" value="登録">
         </form>
+        <hr>
+        <a href="/login/login_form.php">既にユーザー登録済みの方はこちらからログインしてください。</a>
     </body>
 </html>
