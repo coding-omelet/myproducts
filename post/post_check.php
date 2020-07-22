@@ -1,10 +1,12 @@
 <?php
+    ini_set('session.gc_maxlifetime', "604800");
+    ini_set('session.cookie_lifetime', "604800");
     session_start();
     header("Content-type: text/html; charset=utf-8");
     header('X-FRAME-OPTIONS: SAMEORIGIN');
 
-    // POSTされていなければ
-    if(empty($_POST)) {
+    // ログインされていなければ
+    if(!isset($_SESSION['token'])) {
         // トップページに飛ばす
         header("Location: /top_page.php");
         exit;
@@ -33,7 +35,7 @@
     require_once '/public_html/db.php';
 
 	//POSTされたデータを各変数に入れる
-	$url = isset($_POST['submission_url']) ? $_POST['submission_url'] : NULL;
+	$url = isset($_POST['url']) ? $_POST['url'] : NULL;
 	$comment = isset($_POST['comment']) ? $_POST['comment'] : NULL;
 	
 	//前後にある半角全角スペースを削除
