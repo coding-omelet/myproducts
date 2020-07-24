@@ -30,19 +30,19 @@
             <table>
                 <tr>
                     <td>コンテスト名：</td>
-                    <td><input type="text" name="contest" maxlength="30"></td>
+                    <td><input type="text" name="contest" maxlength="30" required></td>
                 </tr>
                 <tr>
                     <td>問題名：</td>
-                    <td><input type="text" name="problem" maxlength="30"></td>
+                    <td><input type="text" name="problem" maxlength="30" required></td>
                 </tr>
                 <tr>
                     <td>言語：</td>
-                    <td><input type="text" name="language" maxlength="10"></td>
+                    <td><input type="text" name="language" maxlength="10" required></td>
                 </tr>
                 <tr>
                     <td>得点：</td>
-                    <td><input type="number" name="score" min="0"></td>
+                    <td><input type="number" name="score" value="0" min="0" max="2000000000" required></td>
                 </tr>
                 <tr>
                     <td>結果：</td>
@@ -52,6 +52,7 @@
                             <option value="WA">
                             <option value="TLE">
                             <option value="MLE">
+                            <option value="RE">
                             <option value="CE">
                         </select>
                     </td>
