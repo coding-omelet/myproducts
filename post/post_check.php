@@ -91,7 +91,7 @@
             // データベースに登録
             $name = $_SESSION['name'];
             $time = date("Y/m/d G:i:s");
-            $sql = 'INSERT INTO post (name, contest, problem, language, score, result, url, time, comment) VALUES (:name, :contest, :problem, :language, :score, :url, :time, :comment)';
+            $sql = 'INSERT INTO post (name, contest, problem, language, score, result, url, time, comment) VALUES (:name, :contest, :problem, :language, :score, :result, :url, :time, :comment)';
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':contest', $contest, PDO::PARAM_STR);

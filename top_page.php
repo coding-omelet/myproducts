@@ -31,9 +31,46 @@
 
         <!-- 投稿フォームへのリンク -->
         <hr>
-            <a href="post/post_form.php">投稿する<br></a>
+        <a href="post/post_form.php">投稿する<br></a>
 
         <!-- タイムラインを表示 -->
+        <hr>
+        <?php
+            require_once '/public_html/db.php';
 
+            // 新しい順に最大10件の投稿を取得
+            $sql = "SELECT * FROM post ORDER BY id DESC LIMIT 10";
+            $stmt = $pdo->query($sql);
+            $results = $stmt->fetchAll();
+
+            // 結果を表示
+            echo "<table>
+                <tr>
+                    <td>ユーザー</td>
+                    <td>コンテスト</td>
+                    <td>問題</td>
+                    <td>言語</td>
+                    <td>得点</td>
+                    <td>結果</td>
+                    <td>日時</td>
+                    <td>コメント</td>
+                    <td>詳細</td>
+                </tr>
+            ";
+            foreach ($results as $post) {
+                echo "<tr>
+                    <td>$post[name]</td>
+                    <td>$post[contest]</td>
+                    <td>$post[problem]</td>
+                    <td>$post[language]</td>
+                    <td>$post[score]</td>
+                    <td>$post[result]</td>
+                    <td>$post[time]</td>
+                    <td>$post[comment]</td>
+                    <td><a href=\"$post[url]\">詳細</a></td>
+                </tr>";
+            }      
+            echo "</table>";
+        ?>
     </body>
 </html>

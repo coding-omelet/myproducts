@@ -48,12 +48,12 @@
                     <td>結果：</td>
                     <td>
                         <select name="result">
-                            <option value="AC" selected>
-                            <option value="WA">
-                            <option value="TLE">
-                            <option value="MLE">
-                            <option value="RE">
-                            <option value="CE">
+                            <option value="AC" selected>AC</option>
+                            <option value="WA">WA</option>
+                            <option value="TLE">TLE</option>
+                            <option value="MLE">MLE</option>
+                            <option value="RE">RE</option>
+                            <option value="CE">CE</option>
                         </select>
                     </td>
                 </tr>
@@ -68,6 +68,7 @@
                 <tr>
                     <td><input type="button" value="戻る" onClick="history.back()"></td>
                     <td><input type="submit" value="投稿"></td>
+                </tr>
             </table>
         </form>
     </body>
