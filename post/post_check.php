@@ -70,11 +70,14 @@
 		$errors['language_length'] = "言語は10文字以内で入力して下さい。";
     }
 		
-	// URL入力判定
+    // URL入力判定
+    $url_comp = 'https://atcoder.jp/contests/';
 	if ($url == '') {
 		$errors['url_empty'] = "提出URLが入力されていません。";
     } elseif (mb_strlen($url)>128) {
 		$errors['url_length'] = "URLは128文字以内で入力して下さい。";
+    } elseif (strncmp($url, $url_comp, 28)) {
+        $errors['url_match'] = "URLは \"https://atcoder.jp/contests/\" で始まる必要があります。";
     }
 	
     // コメント長さ判定
