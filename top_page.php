@@ -38,8 +38,8 @@
         <?php
             require_once '/public_html/db.php';
 
-            // 新しい順に最大10件の投稿を取得
-            $sql = "SELECT * FROM post ORDER BY id DESC LIMIT 10";
+            // 新しい順に最大20件の投稿を取得
+            $sql = "SELECT * FROM post ORDER BY id DESC LIMIT 20";
             $stmt = $pdo->query($sql);
             $results = $stmt->fetchAll();
 

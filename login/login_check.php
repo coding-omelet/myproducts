@@ -80,6 +80,7 @@
                     //セッションハイジャック対策
                     session_regenerate_id(true);
                     
+                    $_SESSION['id'] = $row['id'];
                     $_SESSION['mail_address'] = $mail_address;
                     $_SESSION['name'] = $row['name'];
                     header("Location: /top_page.php");
