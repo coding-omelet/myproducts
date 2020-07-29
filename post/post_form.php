@@ -29,35 +29,6 @@
             <input type="hidden" name="token" value=<?=$token?>>
             <table>
                 <tr>
-                    <td>コンテスト名：</td>
-                    <td><input type="text" name="contest" maxlength="30" required></td>
-                </tr>
-                <tr>
-                    <td>問題名：</td>
-                    <td><input type="text" name="problem" maxlength="30" required></td>
-                </tr>
-                <tr>
-                    <td>言語：</td>
-                    <td><input type="text" name="language" maxlength="10" required></td>
-                </tr>
-                <tr>
-                    <td>得点：</td>
-                    <td><input type="number" name="score" value="0" min="0" max="2000000000" required></td>
-                </tr>
-                <tr>
-                    <td>結果：</td>
-                    <td>
-                        <select name="result">
-                            <option value="AC" selected>AC</option>
-                            <option value="WA">WA</option>
-                            <option value="TLE">TLE</option>
-                            <option value="MLE">MLE</option>
-                            <option value="RE">RE</option>
-                            <option value="CE">CE</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
                     <td>提出URL：</td>
                     <td><input type="url" name="url" maxlength="128" required></td>
                 </tr>
