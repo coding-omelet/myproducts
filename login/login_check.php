@@ -13,7 +13,7 @@
     }
 
     // CSRF
-    if ($_POST['token'] != $_SESSION['token']){
+    if (!isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']){
         echo "エラー";
         exit;
     }
@@ -30,9 +30,6 @@
 
     //エラーメッセージの初期化
     $errors = array();
-
-    // データベースに接続
-    require_once '/public_html/db.php';
 
 	//POSTされたデータを各変数に入れる
 	$mail_address = isset($_POST['mail_address']) ? $_POST['mail_address'] : NULL;
@@ -54,13 +51,14 @@
 		$errors['password_empty'] = "パスワードが入力されていません。";
     } elseif (!preg_match('/^[0-9a-zA-Z]{1,30}$/', $_POST["password"])) {
 		$errors['password_length'] = "パスワードは半角英数字30文字以下で入力して下さい。";
-    } else {
-		$password_hide = str_repeat('*', strlen($password));
     }
     
     // エラーがなければ
     if (!count($errors)) {
         try{
+            // データベースに接続
+            require_once '/public_html/db.php';
+
             //例外処理を投げる（スロー）ようにする
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             

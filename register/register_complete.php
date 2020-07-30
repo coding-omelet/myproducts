@@ -3,27 +3,33 @@
     ini_set('session.cookie_lifetime', "604800");
     session_start();
     header("Content-type: text/html; charset=utf-8");
+    header('X-FRAME-OPTIONS: SAMEORIGIN');
 
     $errors = array();
 
     // 確認ページから遷移していなければ
-    if (!isset($_POST['urltoken'])) {
+    if (!isset($_POST['token'])) {
         // ユーザー登録ページに飛ばす
         header("Location: register_page.php");
+        exit;
+    }
+
+    // CSRF
+    if (!isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']){
+        echo "エラーが発生しました。";
         exit;
     
     // 確認ページから遷移していれば
     } else {
-        // データベースに接続
-        require_once '/public_html/db.php';
-
         // データを変数に入れる
-        $urltoken = $_POST['urltoken'];
         $mail = $_SESSION['mail'];
         $name = $_SESSION['name'];
         $password_hash = password_hash($_SESSION['password'], PASSWORD_DEFAULT);
 
         try {
+            // データベースに接続
+            require_once '/public_html/db.php';
+
             // 例外を投げるようにする
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

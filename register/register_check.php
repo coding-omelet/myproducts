@@ -3,6 +3,7 @@
     ini_set('session.cookie_lifetime', "604800");
     session_start();
     header("Content-type: text/html; charset=utf-8");
+    header('X-FRAME-OPTIONS: SAMEORIGIN');
 
     // 入力前後の半角全角スペースを削除する関数
     function spaceTrim($str) {
@@ -13,6 +14,12 @@
 
     $errors = array();
 
+    // CSRF
+    if (!isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']){
+        echo "エラーが発生しました。";
+        exit;
+    }
+    
     // 入力ページから遷移していなければ
     if (empty($_POST)) {
         // ユーザー登録ページに飛ばす
@@ -69,7 +76,7 @@
         <?php else: ?>
             以下の項目を確認し、問題が無ければ登録ボタンをクリックしてください。<br>
             <form action="register_complete.php" method="post">
-                <input type="hidden" name="urltoken" value=<?=$_POST['urltoken']?>>
+                <input type="hidden" name="token" value=<?=$_POST['token']?>>
                 <table>
                     <tr>
                         <td>メールアドレス：</td>
@@ -92,3 +99,4 @@
         <?php endif; ?>
     </body>
 </html>
+urltoken

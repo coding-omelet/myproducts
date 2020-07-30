@@ -13,7 +13,7 @@
     }
 
     // CSRF
-    if ($_POST['token'] != $_SESSION['token']){
+    if (!isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']){
         echo "エラーが発生しました。";
         exit;
     }
@@ -36,9 +36,6 @@
 
     //エラーメッセージの初期化
     $errors = array();
-
-    // データベースに接続
-    require_once '/public_html/db.php';
 
     //POSTされたデータを各変数に入れる
 	$url = $_POST['url'];
@@ -124,6 +121,9 @@
     // エラーがなければ
     if (!count($errors)) {
         try{
+            // データベースに接続
+            require_once '/public_html/db.php';
+
             //例外処理を投げる（スロー）ようにする
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
