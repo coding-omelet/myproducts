@@ -6,15 +6,16 @@
     header('X-FRAME-OPTIONS: SAMEORIGIN');
     $errors = array();
 
+    // CSRF
+    $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
+    $token = $_SESSION['token'];
+
+    
     // メールから遷移していない場合
     if (!isset($_GET["urltoken"])) {
         // ユーザー登録ページに飛ばす
         header("Location: register_page.php");
         exit;
-
-    // CSRF
-    $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
-    $token = $_SESSION['token'];
 
     // メールから遷移している場合
     } else {

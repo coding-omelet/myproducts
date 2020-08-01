@@ -55,7 +55,7 @@
             if ($row_count == 0) break;
         }
         // クリック用アドレス
-        $url = 'https://tb-220042.tech-base.net'.__DIR__.'/register_page_2.php'.'?urltoken='.$urltoken;
+        $url = 'https://tb-220042.tech-base.net/register/register_page_2.php'.'?urltoken='.$urltoken;
 
 
         // 既に同じメールアドレスで本登録されていないか？
